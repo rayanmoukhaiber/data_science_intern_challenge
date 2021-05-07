@@ -1,3 +1,29 @@
+Fall 2021 Data Science Intern Challenge 
+
+--------------------------------------------------------------------------------------------------------------
+
+Think about what could be going wrong with our calculation. Think about a better way to evaluate this data. 
+
+ANS: Currently, the AOV is calculating the average customer order over the entire month. However, the problem in this case is that there are 
+very high outlier order amounts (i.e., $704000, $25725, $51540 etc.), that are also getting calculated into the AOV. Therefore what you end up 
+getting is a skewed and inflated AOV, which does not representthe actual AOV. 
+
+--------------------------------------------------------------------------------------------------------------
+
+What metric would you report for this dataset?
+
+ANS: To avoid an inflated AOV, I would instead calculate the Median Order Value (MOV). The MOV will tell you the middle-most number in the dataset 
+and is not prone to being skewed or inflated in the same way as the AOV calculation. This is because when you calculate the median of a dataset, 
+it will not calculate any outliers (i.e., any really high or low values).
+
+--------------------------------------------------------------------------------------------------------------
+
+What is its value?
+
+ANS: The MOV for this dataset is $284. 
+
+--------------------------------------------------------------------------------------------------------------
+
 How many orders were shipped by Speedy Express in total?
 
 SELECT count(ord.shipperid) as Total_Orders, ship.Shipper_ID, ship.Shipper_Name

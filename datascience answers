@@ -1,0 +1,30 @@
+How many orders were shipped by Speedy Express in total?
+
+SELECT count(ord.shipperid) as Total_Orders, ship.Shipper_ID, ship.Shipper_Name
+from orders as ord, shippers as ship,
+WHERE  ord.shipperid= shippers.shipperid
+GROUP BY Total_Orders
+
+The total number of orders shipped by Speedy Express was 54. 
+
+-------------------------------------------------------------------------------------------------
+
+What is the last name of the employee with the most orders?
+
+SELECT count(ord.orderid) as Total_Orders, ord.employeeid as Employee_ID, emp.lastname as Last_Name
+from orders as ord, employees as emp
+WHERE  ord.employeeid=emp.employeeid
+GROUP BY Employee_ID
+
+The last name of the employee with the most orders is Peacock. 
+
+---------------------------------------------------------------------------------------------------
+
+What product was ordered the most by customers in Germany?
+select sum(od.Quantity) as Total_Orders, pro.productname as Product_Name, sup.Country 
+from orderdetails as od, suppliers as sup, products as pro
+where od.productid = pro.productid and sup.supplierid = pro.supplierid and country = 'Germany' 
+GROUP BY ProductName
+
+The product that was the most ordered in Germany was Gumbär Gummibärchen
+

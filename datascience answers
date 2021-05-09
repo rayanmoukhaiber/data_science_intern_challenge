@@ -1,4 +1,4 @@
-Fall 2021 Data Science Intern Challenge 
+Fall 2021 Data Science Intern Challenge Answers
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -6,7 +6,7 @@ Think about what could be going wrong with our calculation. Think about a better
 
 ANS: Currently, the AOV is calculating the average customer order over the entire month. However, the problem in this case is that there are 
 very high outlier order amounts (i.e., $704000, $25725, $51540 etc.), that are also getting calculated into the AOV. Therefore what you end up 
-getting is a skewed and inflated AOV, which does not representthe actual AOV. 
+getting is a skewed and inflated AOV, which does not represent the actual AOV. 
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -26,32 +26,31 @@ ANS: The MOV for this dataset is $284.
 
 How many orders were shipped by Speedy Express in total?
 
-SELECT count(ord.shipperid) as Total_Orders, ship.Shipper_ID, ship.Shipper_Name
-from orders as ord, shippers as ship,
-WHERE  ord.shipperid= shippers.shipperid
-GROUP BY Total_Orders
+SELECT count(ord.shipperid) as TotalOrdersShipped, sh.shippername
+from orders as ord, shippers as sh
+where ord.shipperid = sh.shipperid
+Group by sh.shippername
 
 The total number of orders shipped by Speedy Express was 54. 
 
-FIX MEEEEEEEEEEEEEEEE
--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 
 What is the last name of the employee with the most orders?
 
-SELECT count(ord.orderid) as Total_Orders, ord.employeeid as Employee_ID, emp.lastname as Last_Name
+SELECT count(ord.orderid) as EmployeeTotalOrders, ord.employeeid as EmployeeID, emp.lastname as LastName
 from orders as ord, employees as emp
-WHERE  ord.employeeid=emp.employeeid
-GROUP BY Employee_ID
+WHERE ord.employeeid=emp.employeeid
+GROUP BY ord.EmployeeID
 
-The last name of the employee with the most orders is Peacock. 
+ANS: The last name of the employee with the most orders is Peacock. 
 
----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 
 What product was ordered the most by customers in Germany?
-select sum(od.Quantity) as Total_Orders, pro.productname as Product_Name, sup.Country 
+
+select sum(od.Quantity) as ProductTotalOrders, pro.productname as ProductName, sup.Country 
 from orderdetails as od, suppliers as sup, products as pro
 where od.productid = pro.productid and sup.supplierid = pro.supplierid and country = 'Germany' 
-GROUP BY ProductName
+GROUP BY pro.ProductName
 
-The product that was the most ordered in Germany was Gumbär Gummibärchen
-
+ANS: The product that was the most ordered in Germany was Gumbär Gummibärchen

@@ -31,7 +31,7 @@ from orders as ord, shippers as sh
 where ord.shipperid = sh.shipperid
 Group by sh.shippername
 
-The total number of orders shipped by Speedy Express was 54. 
+ANS: The total number of orders shipped by Speedy Express was 54. 
 
 --------------------------------------------------------------------------------------------------------------
 
